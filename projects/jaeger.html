@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Jaeger — Keaton Zelazny</title>
+<meta name="description" content="Training a 6-DOF simulated biped to walk using PPO residual actions layered on a physics-based PD controller.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="mark" href="../index.html">KZ<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="../index.html#work">work</a>
+      <a href="../index.html#about">about</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="detail">
+  <div class="wrap">
+    <a class="back" href="../index.html#work">&larr; All work</a>
+    <h1>Project Jaeger</h1>
+    <div class="detail-meta">
+      <span>Fall 2025 — present</span>
+      <span>Python · Gymnasium · PyBullet · Stable-Baselines3</span>
+      <span>Ongoing</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="prose">
+
+    <p>
+      Jaeger is an attempt to get a six-degree-of-freedom biped to walk in a straight line,
+      and to do it in a way that could eventually survive contact with real hardware. It's
+      the project I've spent the most time on and the one where the most things have gone wrong.
+    </p>
+
+    <figure>
+      <div class="placeholder">Drop a training clip or screenshot at assets/img/jaeger-walk.gif</div>
+      <figcaption>The policy after training — walking in a straight line.</figcaption>
+    </figure>
+
+    <h2>The environment</h2>
+    <p>
+      I built the simulation myself rather than using an off-the-shelf locomotion benchmark,
+      which meant writing the URDF model, setting joint limits, and tuning contact dynamics
+      until foot-ground interaction stopped producing physically impossible behavior.
+    </p>
+    <p>
+      The most important constraint is one that's easy to skip: control signals are clamped
+      to ranges a real actuator could actually produce. It's straightforward to train a policy
+      that walks beautifully by commanding torques no servo can deliver, and that policy is
+      worth nothing off the simulator. Constraining the action space early costs training
+      performance and buys a chance at sim-to-real transfer later.
+    </p>
+
+    <h2>Control architecture</h2>
+    <p>
+      The policy doesn't drive the joints directly. Underneath it sits a physics-based PD
+      controller that already knows roughly how to hold a pose, and the PPO policy outputs
+      <em>residual</em> actions layered on top of it — corrections, not commands.
+    </p>
+    <p>
+      This matters for two reasons. The controller gives the agent a sane starting point,
+      so early training isn't spent rediscovering that legs should stay underneath the body.
+      And because the learned component is only a correction term, the failure mode when
+      the policy encounters something unfamiliar is degradation toward the PD controller's
+      behavior rather than immediate collapse.
+    </p>
+
+    <h2>Training</h2>
+    <p>
+      Training uses PPO through Stable-Baselines3, with runs tracked in TensorBoard. Most of
+      the iteration hasn't been on hyperparameters — it's been on the reward function.
+    </p>
+    <p>
+      Reward shaping is where this kind of project actually lives. An agent will find every
+      loophole a reward leaves open: reward forward velocity alone and it learns to fall
+      forward productively; penalize falling too hard and it learns to stand still forever.
+      Each of those is a bug in what I asked for, not in what it did.
+    </p>
+
+    <figure>
+      <div class="placeholder">Drop a TensorBoard reward curve at assets/img/jaeger-reward.png</div>
+      <figcaption>Episode reward across training runs.</figcaption>
+    </figure>
+
+    <h2>Where it stands</h2>
+    <ul>
+      <li>Custom Gymnasium environment with a URDF-modeled 6-DOF biped</li>
+      <li>Actuator-realistic action clamping in place from the start</li>
+      <li>PPO residual policy over a PD baseline, training stably</li>
+      <li>Straight-line walking; turning and uneven terrain are next</li>
+    </ul>
+    <p>
+      The eventual goal is putting a version of this on physical hardware. That's the point
+      at which every simplifying assumption in the simulator gets audited at once, which is
+      why the constraints went in early.
+    </p>
+
+    <p style="margin-top:40px">
+      <a class="btn ghost" href="../index.html#work">&larr; Back to all work</a>
+    </p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:10px">
+    <span>Keaton Zelazny &middot; <span id="year"></span></span>
+    <span>zelazny.k@northeastern.edu</span>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

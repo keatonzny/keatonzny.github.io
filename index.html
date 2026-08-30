@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keaton Zelazny — Computer Engineer</title>
+<meta name="description" content="Computer engineering and computer science student at Northeastern University working across FPGA design, embedded firmware, and software. Graduating May 2027.">
+
+<meta property="og:title" content="Keaton Zelazny — Computer Engineer">
+<meta property="og:description" content="FPGA design, embedded firmware, and software. Northeastern University, May 2027.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keatonzelazny.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="mark" href="#top">KZ<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#work">work</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+      <a href="assets/Keaton_Zelazny_Resume.pdf">resume</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Boston, MA</p>
+    <h1>Keaton<br>Zelazny</h1>
+    <p class="lede">
+      Computer engineer working the whole stack between a sensor and a screen —
+      <em>FPGA datapaths</em>, <em>embedded control</em>, and the software that ties them together.
+    </p>
+    <div class="facts">
+      <span>Northeastern University</span>
+      <span>B.S. Computer Engineering &amp; Computer Science</span>
+      <span>May 2027</span>
+      <span>GPA 3.94</span>
+    </div>
+    <div class="btn-row">
+      <a class="btn" href="#work">See the work</a>
+      <a class="btn ghost" href="mailto:zelazny.k@northeastern.edu">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<div class="trace-band" aria-hidden="true">
+  <svg viewBox="0 0 1200 108" preserveAspectRatio="none">
+    <path d="M0 54 H50 V26 H105 V82 H160 V26 H215 V82 H270 V54 H330
+             L352 54 L362 46 L372 54 H392 L400 66 L410 16 L420 92 L430 54 H455 L472 40 L490 54 H520
+             L532 54 L542 46 L552 54 H572 L580 66 L590 16 L600 92 L610 54 H635 L652 40 L670 54 H720
+             C748 52 760 62 778 58 C800 53 812 44 832 47 C854 50 866 36 888 38
+             C910 40 922 30 946 31 C972 32 986 24 1012 25 C1042 26 1058 20 1084 21
+             C1116 22 1140 18 1200 17"/>
+  </svg>
+</div>
+<div class="trace-labels">
+  <span>digital</span>
+  <span>analog</span>
+  <span>learned</span>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Work</h2>
+      <span class="sec-count" id="count"></span>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter projects by discipline">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="hardware" aria-pressed="false">Hardware</button>
+      <button class="chip" data-filter="firmware" aria-pressed="false">Firmware</button>
+      <button class="chip" data-filter="software" aria-pressed="false">Software</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><h2>About</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>
+          I'm a fourth-year student at Northeastern in the combined computer engineering and
+          computer science major, and most of what I
+          like doing sits at the boundary where software has to meet something physical —
+          a servo that doesn't move when you told it to, an op-amp stage that oscillates,
+          a policy that walks in simulation and falls over anywhere else.
+        </p>
+        <p>
+          On co-op at Genezen I replaced a set of end-of-life sensor transmitters and rebuilt
+          their integration into the plant's Ignition system: authenticating to the vendor's
+          REST API, pulling live readings in Jython, and building sensor type definitions so
+          every new unit inherited historian logging and a display without anyone configuring
+          it by hand. It was the first time I'd owned an integration end to end, and most of
+          the work turned out to be deciding what the data should look like before any of it moved.
+        </p>
+        <p>
+          Right now I'm training a simulated biped to walk, taking Fundamentals of Electronics
+          and Computer Architecture, and looking for a full-time role starting after I graduate
+          in May 2027.
+        </p>
+      </div>
+      <div class="side-block">
+        <h4>Languages</h4>
+        <ul>
+          <li>C, C++ <span>— embedded, systems</span></li>
+          <li>Python <span>— simulation, scripting</span></li>
+          <li>Java</li>
+          <li>SystemVerilog</li>
+          <li>RISC-V &amp; x86 assembly</li>
+        </ul>
+        <h4>Tools</h4>
+        <ul>
+          <li>Vivado, Quartus Prime</li>
+          <li>PSpice, SolidWorks, AutoCAD</li>
+          <li>Git, Unix/Linux, GDB</li>
+          <li>Ignition, FactoryTalk</li>
+        </ul>
+        <h4>Outside of that</h4>
+        <ul>
+          <li>Cooking, running, NBA, travel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head"><h2>Contact</h2></div>
+    <p style="max-width:52ch;margin:0 0 4px">
+      Open to full-time roles in hardware, firmware, or software starting mid-2027.
+      Email is the fastest way to reach me.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:zelazny.k@northeastern.edu">zelazny.k@northeastern.edu</a>
+      <a href="https://linkedin.com/in/keaton-zelazny">LinkedIn</a>
+      <a href="https://github.com/">GitHub</a>
+      <a href="assets/Keaton_Zelazny_Resume.pdf">Resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:10px">
+    <span>Keaton Zelazny &middot; <span id="year"></span></span>
+    <span>Built from scratch. No template.</span>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
