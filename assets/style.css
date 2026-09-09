@@ -99,6 +99,22 @@ a { color: inherit; }
 
 .hero { padding: 78px 0 44px; }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-photo img {
+  display: block;
+  width: 268px;
+  height: 268px;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+
 .eyebrow {
   font-family: var(--mono);
   font-size: 12px;
@@ -455,7 +471,10 @@ figure figcaption {
 
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; gap: 34px; }
-  .hero { padding: 50px 0 32px; }
+  .hero { padding: 42px 0 32px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 22px; }
+  .hero-photo { order: -1; }
+  .hero-photo img { width: 104px; height: 104px; }
   section { padding: 50px 0; }
   .nav-links { gap: 18px; }
 }

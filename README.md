@@ -50,6 +50,8 @@ Expected filenames:
     jaeger.jpg  riscv.jpg  shell.jpg  recipebook.jpg
     ecg.jpg  spider.jpg  lockbox.jpg  derivative.jpg
 
+The hero headshot is `assets/img/keaton.jpg` (square, 640x640).
+
 ## Resume
 
 Export your resume to PDF and save it as `assets/Keaton_Zelazny_Resume.pdf`.
