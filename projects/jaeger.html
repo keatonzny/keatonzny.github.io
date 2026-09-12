@@ -50,7 +50,8 @@
     </p>
 
     <figure>
-      <div class="placeholder">Drop a training clip or screenshot at assets/img/jaeger-walk.gif</div>
+        <video src="../assets/img/jaeger-walk.mp4" autoplay loop muted playsinline
+         style="width:100%;display:block"></video>
       <figcaption>The policy after training — walking in a straight line.</figcaption>
     </figure>
 
@@ -61,10 +62,8 @@
       until foot-ground interaction stopped producing physically impossible behavior.
     </p>
     <p>
-      The most important constraint is one that's easy to skip: control signals are clamped
-      to ranges a real actuator could actually produce. It's straightforward to train a policy
-      that walks beautifully by commanding torques no servo can deliver, and that policy is
-      worth nothing off the simulator. Constraining the action space early costs training
+      The most important constraint is that the control signals are clamped
+      to ranges a real actuator could actually produce. This is what would be crucial for future real-world implementation. Constraining the action space early costs training
       performance and buys a chance at sim-to-real transfer later.
     </p>
 
@@ -72,7 +71,7 @@
     <p>
       The policy doesn't drive the joints directly. Underneath it sits a physics-based PD
       controller that already knows roughly how to hold a pose, and the PPO policy outputs
-      <em>residual</em> actions layered on top of it — corrections, not commands.
+      <em>residual</em> actions layered on top of it. These are corrections rather than commands.
     </p>
     <p>
       This matters for two reasons. The controller gives the agent a sane starting point,
@@ -85,13 +84,12 @@
     <h2>Training</h2>
     <p>
       Training uses PPO through Stable-Baselines3, with runs tracked in TensorBoard. Most of
-      the iteration hasn't been on hyperparameters — it's been on the reward function.
+      the iteration has been on shaping the reward function.
     </p>
     <p>
-      Reward shaping is where this kind of project actually lives. An agent will find every
-      loophole a reward leaves open: reward forward velocity alone and it learns to fall
-      forward productively; penalize falling too hard and it learns to stand still forever.
-      Each of those is a bug in what I asked for, not in what it did.
+      An agent will find every
+      loophole a reward leaves open. If you were to reward forward velocity alone, it might learn to fall
+      forward productively. If you penalize falling too hard, it may learn to stand still forever. Both of these were scenarios that I had to work through.
     </p>
 
     <figure>
@@ -107,9 +105,7 @@
       <li>Straight-line walking; turning and uneven terrain are next</li>
     </ul>
     <p>
-      The eventual goal is putting a version of this on physical hardware. That's the point
-      at which every simplifying assumption in the simulator gets audited at once, which is
-      why the constraints went in early.
+      The eventual goal is to put a version of this on physical hardware, though that may have to wait until I settle down into a more permanent living situation before doing so.
     </p>
 
     <p style="margin-top:40px">
