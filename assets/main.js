@@ -35,7 +35,7 @@ const PROJECTS = [
     tags: ['software', 'firmware'],
     image: 'assets/img/shell.jpg',
     stack: 'C · POSIX',
-    blurb: 'A working command-line shell built directly on fork, exec, and pipe — process creation, I/O redirection, and multi-stage pipelines, with the parsing and cleanup that has to go around them.'
+    blurb: 'A working command-line shell built directly on fork, exec, and pipe. This was later paired with a custom-built file system.'
   },
   {
     title: 'Recipe Book',
@@ -44,7 +44,7 @@ const PROJECTS = [
     tags: ['software'],
     image: 'assets/img/recipebook.jpg',
     stack: 'Java',
-    blurb: 'A Java application for storing and searching recipes, built as an exercise in keeping data, logic, and interface genuinely separate rather than nominally separate.'
+    blurb: 'A Java application for storing and searching recipes, built as an exercise in keeping data, logic, and interface seperate under the design principles learned from object-oriented design.'
   },
   {
     title: 'ECG Analog Front End',
@@ -53,7 +53,7 @@ const PROJECTS = [
     tags: ['hardware'],
     image: 'assets/img/ecg.jpg',
     stack: 'Op-amp filter design · PSpice',
-    blurb: 'An analog signal chain that pulls a readable cardiac waveform out of noisy electrode input using cascaded amplification and filtering. Modeled in PSpice first, then built and measured against the model.'
+    blurb: 'An analog signal chain that pulls a readable cardiac waveform out of noisy electrode input using cascaded amplification and filtering. Modeled in PSpice, then built from said model.'
   },
   {
     title: 'Six-Legged Walking Robot',
@@ -62,7 +62,7 @@ const PROJECTS = [
     tags: ['firmware'],
     image: 'assets/img/spider.jpg',
     stack: 'Embedded C++',
-    blurb: 'Gait and steering firmware for a hexapod, coordinating servo timing across all six legs. Tuned against the hardware itself, which behaved rather differently than the plan on paper.'
+    blurb: 'Gait and steering firmware for a hexapod, coordinating servo timing across all six legs. Tuned against the hardware itself, which required pulse-width modulation understanding.'
   },
   {
     title: 'RFID Phone Lockbox',
@@ -71,7 +71,7 @@ const PROJECTS = [
     tags: ['firmware', 'hardware'],
     image: 'assets/img/lockbox.jpg',
     stack: 'Microcontroller · RFID · servo actuation',
-    blurb: 'An enclosure that only opens for a recognized RFID tag. Reader input, authentication, and a servo-driven latch — built to make putting your phone away a deliberate act.'
+    blurb: 'An enclosure that only opens for a recognized RFID tag. Reader input, authentication, and a servo-driven latch. Built to make putting your phone away a deliberate act.'
   },
   {
     title: 'Derivative Calculator',

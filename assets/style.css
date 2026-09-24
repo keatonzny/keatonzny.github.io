@@ -10,8 +10,8 @@
   --rule:   #CBD1C9;
   --ink:    #14171A;
   --muted:  #646C6A;
-  --accent: #1B3B6F;
-  --accent-soft: rgba(27, 59, 111, 0.10);
+  --accent: #006fa7;
+  --accent-soft: rgba(0, 111, 167, 0.10);
 
   --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
@@ -98,6 +98,28 @@ a { color: inherit; }
 /* ---------- hero ---------- */
 
 .hero { padding: 78px 0 44px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 700px) auto;
+  justify-content: start;
+  gap: 64px;
+  align-items: start;
+}
+
+/* offset equal to the eyebrow line + its margin, so the photo's top edge
+   lands on the cap height of the name rather than above it */
+.hero-photo { margin-top: 39px; }
+
+.hero-photo img {
+  display: block;
+  width: 268px;
+  height: 268px;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--panel);
+}
 
 .eyebrow {
   font-family: var(--mono);
@@ -455,7 +477,10 @@ figure figcaption {
 
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; gap: 34px; }
-  .hero { padding: 50px 0 32px; }
+  .hero { padding: 42px 0 32px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 22px; justify-content: stretch; }
+  .hero-photo { order: -1; margin-top: 0; }
+  .hero-photo img { width: 104px; height: 104px; }
   section { padding: 50px 0; }
   .nav-links { gap: 18px; }
 }
